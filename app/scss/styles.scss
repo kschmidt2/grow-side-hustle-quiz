@@ -25,19 +25,35 @@ $breakpoint-lg: 717px;
 
 .chart-area {
   @import "type";
-  @import "highcharts";
 
-  background-size: 100px;
-  background-repeat: no-repeat;
-  background-image:
-    url(https://fm-static.cnbc.com/awsmedia/chart/2019/6/10/grow_leaves.1562793463706.png);
-  background-position: bottom right;
   max-width: 660px;
   margin-bottom: 25px;
   font-family: $font-stack;
+  font-size: 18px;
+
+  .calc-subhead {
+    color: $slate-secondary-6;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    border-top: 5px solid $green-primary;
+    padding-top: 15px;
+    margin-top: 50px;
+  }
+
+  .calc-input {
+    margin-bottom: 10px;
+    & input {
+      border: 1px solid $slate-secondary-3;
+      font-size: 24px;
+      color: $green-primary;
+      font-weight: 600;
+      padding: 5px;
+      width: 150px;
+    }
+  }
 
   & a {
-    border-bottom: 1px solid $green-primary;
     color: $green-primary;
     text-decoration: none;
   }
@@ -62,4 +78,10 @@ $breakpoint-lg: 717px;
   
 }
 
-@import "social";
+.chart-area p {
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #000;
+  line-height: 30px;
+  font-weight: 300;
+}
