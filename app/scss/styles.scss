@@ -43,13 +43,23 @@ $breakpoint-lg: 717px;
 
   .calc-input {
     margin-bottom: 10px;
+    & label {
+      display: block;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 5px;
+      &.radio-label {
+        display: inline-block;
+        margin-right: 35px;
+      }
+    }
     & input {
       border: 1px solid $slate-secondary-3;
       font-size: 24px;
       color: $green-primary;
       font-weight: 600;
       padding: 5px;
-      width: 150px;
+      // width: 150px;
     }
   }
 

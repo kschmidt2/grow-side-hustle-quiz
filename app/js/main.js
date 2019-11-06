@@ -1,6 +1,23 @@
-var app = new Vue({
-    el: '#app',
+var calculator = new Vue({
+    el: '#calculator',
     data: {
-      message: 'Hello Vue!'
+      currentAge: '',
+      retirementAge: '',
+      income: '',
+      incomeIncrease: '',
+      savingsYesNo: '',
+      currentSavings: '',
+      annualGrowth: '',
+      retirementIncome: '',
+      socialSecurity: '',
+      totalNeeded: '',
+      saveAmount: '',
+      seen: false
+    },
+    computed: {
+      // calculator math goes here
+    },
+    methods: {
+      // functions go here
     }
   })
