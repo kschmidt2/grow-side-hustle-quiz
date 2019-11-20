@@ -28,7 +28,7 @@
     <p class="body-text">
         Follow along and enter your information below to get a personalized savings goal. 
     </p>
-    <div class="calc-subhead">Basic info</div>
+    <h2 class="ArticleBody-styles-acorns-subtitle--owh1-">Basic information</h2>
     <p class="body-text">
         To begin, we need to know how old you are now and at what age you plan to retire, so we can calculate how long you’ll have to save. 
     </p>
@@ -37,17 +37,16 @@
         <input type="number" name="current-age" v-model.number="currentAge"></input>
     </div>
     <p class="body-text">
-        While the current average retirement age among retirees is about 60 years old, that’s expected to increase for younger generations. Americans born in 1960 or later can access partial Social Security benefits at age 62 and full benefits at age 67. Some experts recommend holding off on collecting until age 70 because Americans are living longer, meaning your savings need to last longer.
+        While the current average retirement age among retirees is <a href="https://dqydj.com/average-retirement-age-in-the-united-states/">about 60 years old</a>, that’s expected to increase for younger generations. Americans born in 1960 or later can access partial Social Security benefits at age 62 and full benefits at age 67. Some experts recommend <a href="https://www.cnbc.com/2018/01/30/suze-orman-and-stanford-research-agree-70-is-the-new-retirement-age.html">holding off on collecting until age 70</a> because Americans are living longer, meaning your savings need to last longer.
     </p>
     <p class="body-text">
         If you’re not sure what to choose, consider going with the default age of 67.
-    </p>
     </p>
     <div class="calc-input">
         <label for="retirement-age">Retirement age</label>
         <input type="number" name="retirement-age" v-model.number="retirementAge"></input>
     </div>
-    <div class="calc-subhead">Income</div>
+    <h2 class="ArticleBody-styles-acorns-subtitle--owh1-">Income</h2>
     <p class="body-text">
         How much money you make will determine how much you’ll need to maintain your standard of living in retirement, as well as how much of your income you should contribute to a 401(k) or other savings plan.
     </p>
@@ -55,14 +54,7 @@
         <label for="income">Current income</label>
         <input type="number" name="income" v-model.number="income"></input>
     </div>
-    <p class="body-text">
-        This calculator assumes a 2% annual increase in your income. If you would like to use a different number, enter it below. It’s difficult to know how your income will change throughout the course of your career, since promotions, job changes, recessions and other factors can affect your salary, but how much you make should increase over time.
-    </p>
-    <div class="calc-input">
-        <label for="income-increase">Annual income increase</label>
-        <input type="number" name="income-increase" v-model.number="incomeIncrease"></input>
-    </div>
-    <div class="calc-subhead">Savings & growth</div>
+    <h2 class="ArticleBody-styles-acorns-subtitle--owh1-">Savings & growth</h2>
     <p class="body-text">
         Do you currently have any retirement savings?
     </p>
@@ -85,7 +77,7 @@
         That’s OK! We’ll help you get started
     </p>
     <p class="body-text">
-        Over time you should see an average annual growth of 5-10%, not counting inflation. Some experts advise you to use a conservative estimate of 5-6% since it’s better to end up with too much money than too little. Others say you can safely use 8%, which has been roughly the compound annual growth rate of the S&P 500 since 1980. 
+        Over time you should see an average annual growth of 5-10%, not counting inflation. <a href="https://www.moneyunder30.com/rate-of-return-for-retirement-planning">Some experts advise</a> you to use a conservative estimate of 5-6% since it’s better to end up with too much money than too little. Others say you can safely use 8%, which has been <a href="http://www.moneychimp.com/features/market_cagr.htm">roughly the compound annual growth rate of the S&P 500 since 1980</a>. 
     </p>
     <p class="body-text">
         For simplicity, we’ll start you off at 6%. If you want to be more conservative or more optimistic, you can adjust this number below.
@@ -94,29 +86,21 @@
         <label for="annual-growth">Expected annual growth</label>
         <input type="number" name="annual-growth" v-model.number="annualGrowth"></input>
     </div>
-    <div class="calc-subhead">How much you need</div>
+    <h2 class="ArticleBody-styles-acorns-subtitle--owh1-">How much you need</h2>
     <p class="body-text">
-        Now comes the tricky part: figuring out how much you’ll need to save to live comfortably in retirement. Generally, experts say you’ll need 70 to 80% of your income each year to maintain your standard of living, but that isn’t the case for everyone.
+        Now comes the tricky part: figuring out how much you'll need to save to live comfortably in retirement. <a href="https://grow.acorns.com/how-to-find-out-how-much-money-you-need-to-retire-comfortably/">Generally, experts say</a> you'll need 70 to 80% of your income each year to maintain your standard of living, but that isn't the case for everyone.
     </p>
     <p class="body-text">
-        Owning a house outright by the time you retire will cut down on your cost of living by eliminating a rent or mortgage payment from your monthly expenses. But Millennials are waiting longer to purchase homes than previous generations, and have lower home ownership rates, so many will not reach this milestone by the time they retire. Also, you should expect healthcare spending to increase in retirement, potentially offsetting any savings in housing costs.
+        Lifestyle factors and preferences will affect how much you spend during your retirement. If you're hoping to live a more active lifestyle and travel often, you should <a href="https://www.fidelity.com/viewpoints/retirement/spending-in-retirement">add six percentage points</a> to your annual budget.
     </p>
     <p class="body-text">
-        Lifestyle factors and preferences will also affect how much you spend. When you think of your retirement years, do you picture traveling the world on luxury cruise liners, or spending quiet time at home with family? Keep in mind that unless you plan to embark on a second career, you will be filling the hours you spent working with leisure, and leisure can get expensive. If you’d like to live a more active lifestyle in retirement, you should add six percentage points to your annual retirement budget.
-    </p>
-    <p class="body-text">
-        Your salary at retirement will also affect the percentage of that income you need to have saved. Generally, the more money you make, the lower percentage you need to cover your expenses when you’re retired.
-    </p>
-    <p class="body-text">
-        And remember, you do need to pay taxes on withdrawals from any tax-deferred investments, like a 401(k), but you of course will not need to set aside a portion of your income to save for retirement.
-    </p>
-    <p class="body-text">
-        We’ll start you off with an annual spending goal determined by the income you entered above. You can make adjustments based on the expectations you have for your post-work years.
+        We'll start you off with an annual spending goal determined by the income you entered above. You can make adjustments based on the expectations you have for your post-work years.
     </p>
     <div class="calc-input">
         <label for="retirement-income">Annual spending goal</label>
         <input type="number" name="retirement-income" v-model.number="retirementIncome"></input>
     </div>
+	<h2 class="ArticleBody-styles-acorns-subtitle--owh1-">Social Security</h2>
     <p class="body-text">
         Finally, do you want to factor in your estimated Social Security payments?
     </p>
@@ -128,7 +112,8 @@
     </div>
 
     <div class="results" v-if="currentAge && retirementAge && income && incomeIncrease && annualGrowth && retirementIncome && socialSecurity">
-        These are your results.
+        <h2 class="ArticleBody-styles-acorns-subtitle--owh1-">Results</h2>
+        <b>Monthly savings goal:</b> {{savingsGoal}}
     </div>
     <div class="error-message" v-if="!currentAge && !retirementAge && !income && !incomeIncrease && !annualGrowth && !retirementIncome && socialSecurity">
         You missed a field. Go back and make sure they're all completed.
