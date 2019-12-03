@@ -42,15 +42,24 @@
     <p class="body-text">
         If you’re not sure what to choose, consider going with the default age of 67.
     </p>
-    <div class="calc-input">
-        <label for="retirement-age">Retirement age</label>
-        <input type="number" name="retirement-age" v-model.number="retirementAge"></input>
+    <div class="calc-input-radio retirement-radio">
+        <input type="radio" id="retirement-62" name="retirement-age" v-model="retirementAge" value="62"></input>
+        <label for="retirement-62">62</label>
+
+        <input type="radio" id="retirement-65" name="retirement-age" v-model="retirementAge" value="65"></input>
+        <label for="retirement-65">65</label>
+
+        <input type="radio" id="retirement-67" name="retirement-age" v-model="retirementAge" value="67"></input>
+        <label for="retirement-67">67</label>
+
+        <input type="radio" id="retirement-70" name="retirement-age" v-model="retirementAge" value="70"></input>
+        <label for="retirement-70">70</label>
     </div>
     <h2 class="ArticleBody-styles-acorns-subtitle--owh1-">Income</h2>
     <p class="body-text">
         How much money you make will determine how much you’ll need to maintain your standard of living in retirement, as well as how much of your income you should contribute to a 401(k) or other savings plan.
     </p>
-    <div class="calc-input">
+    <div class="calc-input money-input">
         <label for="income">Current income</label>
         <input type="number" name="income" v-model.number="income"></input>
     </div>
@@ -58,33 +67,43 @@
     <p class="body-text">
         Do you currently have any retirement savings?
     </p>
-    <div class="calc-input">
-        <input type="radio" name="savings-yes-no" v-model="savingsYesNo" value="yes"></input>
-        <label class="radio-label" for="yes">Yes</label>
-        <input type="radio" name="savings-yes-no" v-model="savingsYesNo" value="no"></input>
-        <label class="radio-label" for="no">No</label>
+    <div class="calc-input-radio">
+        <input type="radio" id="savings-yes" name="savings-yes-no" v-model="savingsYesNo" value="yes"></input>
+        <label for="savings-yes">Yes</label>
+
+        <input type="radio" id="savings-no" name="savings-yes-no" v-model.number="currentSavings" value="0"></input>
+        <label for="savings-no">No</label>
     </div>
     <template v-if="savingsYesNo === 'yes'">
-        <p class="body-text">
+        <p class="body-text" style="margin-top:-20px">
                 Great! Enter the amount below so we know what you’re starting with.
         </p>
-        <div class="calc-input">
+        <div class="calc-input money-input">
             <label for="current-savings">Current retirement savings</label>
             <input type="number" name="current-savings" v-model.number="currentSavings"></input>
         </div>
     </template> 
-    <p class="body-text" v-else-if="savingsYesNo === 'no'">
+    <p class="body-text" style="margin-top:-20px" v-else-if="savingsYesNo === 'no'">
         That’s OK! We’ll help you get started
     </p>
     <p class="body-text">
         Over time you should see an average annual growth of 5-10%, not counting inflation. <a href="https://www.moneyunder30.com/rate-of-return-for-retirement-planning">Some experts advise</a> you to use a conservative estimate of 5-6% since it’s better to end up with too much money than too little. Others say you can safely use 8%, which has been <a href="http://www.moneychimp.com/features/market_cagr.htm">roughly the compound annual growth rate of the S&P 500 since 1980</a>. 
     </p>
     <p class="body-text">
-        For simplicity, we’ll start you off at 6%. If you want to be more conservative or more optimistic, you can adjust this number below.
+        Would you like to play it safe with a conservative estimate, take a chance on a more optimistic outlook, or use the historical average return?
     </p>
     <div class="calc-input">
         <label for="annual-growth">Expected annual growth</label>
-        <input type="number" name="annual-growth" v-model.number="annualGrowth"></input>
+        <div class="calc-input-radio growth-radio">
+            <input type="radio" id="conservative" name="annual-growth" v-model="annualGrowth" value="conservative"></input>
+            <label for="conservative">Conservative</label>
+    
+            <input type="radio" id="average" name="annual-growth" v-model="annualGrowth" value="average"></input>
+            <label for="average">Average</label>
+    
+            <input type="radio" id="optimistic" name="annual-growth" v-model="annualGrowth" value="optimistic"></input>
+            <label for="optimistic">Optimistic</label>
+        </div>
     </div>
     <h2 class="ArticleBody-styles-acorns-subtitle--owh1-">How much you need</h2>
     <p class="body-text">
@@ -94,21 +113,34 @@
         Lifestyle factors and preferences will affect how much you spend during your retirement. If you're hoping to live a more active lifestyle and travel often, you should <a href="https://www.fidelity.com/viewpoints/retirement/spending-in-retirement">add six percentage points</a> to your annual budget.
     </p>
     <p class="body-text">
-        We'll start you off with an annual spending goal determined by the income you entered above. You can make adjustments based on the expectations you have for your post-work years.
+        We'll start you off with an annual spending goal of 75% of your final income. You can make adjustments based on the expectations you have for your post-work years.
     </p>
-    <div class="calc-input">
-        <label for="retirement-income">Annual spending goal</label>
-        <input type="number" name="retirement-income" v-model.number="retirementIncome"></input>
+    <div class="calc-input-radio retirement-radio">
+        <input type="radio" id="needed-65" name="total-needed" v-model="totalNeeded" value="65"></input>
+        <label for="needed-65">65</label>
+
+        <input type="radio" id="needed-70" name="total-needed" v-model="totalNeeded" value="70"></input>
+        <label for="needed-70">70</label>
+
+        <input type="radio" id="needed-75" name="total-needed" v-model="totalNeeded" value="75"></input>
+        <label for="needed-75">75</label>
+
+        <input type="radio" id="needed-80" name="total-needed" v-model="totalNeeded" value="80"></input>
+        <label for="needed-80">80</label>
+
+        <input type="radio" id="needed-85" name="total-needed" v-model="totalNeeded" value="85"></input>
+        <label for="needed-85">85</label>
     </div>
 	<h2 class="ArticleBody-styles-acorns-subtitle--owh1-">Social Security</h2>
     <p class="body-text">
         Finally, do you want to factor in your estimated Social Security payments?
     </p>
-    <div class="calc-input">
-        <input type="radio" name="social-security" v-model="socialSecurity" value="yes"></input>
-        <label class="radio-label" for="yes">Yes</label>
-        <input type="radio" name="social-security" v-model="socialSecurity" value="no"></input>
-        <label class="radio-label" for="no">No</label>
+    <div class="calc-input-radio">
+        <input type="radio" id="ss-yes" name="social-security" v-model="socialSecurity" value="yes"></input>
+        <label for="ss-yes">Yes</label>
+
+        <input type="radio" id="ss-no" name="social-security" v-model="socialSecurity" value="no"></input>
+        <label for="ss-no">No</label>
     </div>
 
     <div class="results" v-if="currentAge && retirementAge && income && incomeIncrease && annualGrowth && retirementIncome && socialSecurity">

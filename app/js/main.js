@@ -1,17 +1,17 @@
-setTimeout(function(){
+// setTimeout(function(){
   var calculator = new Vue({
     el: '#calculator',
     data: {
       currentAge: '',
-      retirementAge: '',
+      retirementAge: '67',
       income: '',
       incomeIncrease: '',
       savingsYesNo: '',
-      currentSavings: '0',
-      annualGrowth: '',
+      currentSavings: '',
+      annualGrowth: 'average',
       retirementIncome: '',
       socialSecurity: '',
-      totalNeeded: '',
+      totalNeeded: '75',
       saveAmount: '',
       seen: false
     },
@@ -32,4 +32,4 @@ setTimeout(function(){
       // functions go here
     }
   })
-}, 1000)
+// }, 1000)

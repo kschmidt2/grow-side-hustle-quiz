@@ -49,11 +49,15 @@ $breakpoint-lg: 717px;
     & label {
       display: block;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 16px;
       margin-bottom: 5px;
+      color: $slate-primary;
       &.radio-label {
         display: inline-block;
         margin-right: 35px;
+        text-transform: none;
+        font-weight: 500;
+        font-size: 12;
       }
     }
     & input {
@@ -62,7 +66,70 @@ $breakpoint-lg: 717px;
       color: $green-primary;
       font-weight: 600;
       padding: 5px;
-      // width: 150px;
+      width: 100px;
+    }
+    &.money-input {
+      &:after {
+        content: '$';
+        position: relative;
+        top: -2px;
+        left: -150px;
+        height: 20px;
+        width: 10px;
+        z-index: 999;
+        color: $slate-secondary-3;
+      }
+      & input {
+        padding-left: 25px;
+        width: 130px;
+      }
+    }
+  }
+
+  .calc-input-radio {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    & input {
+      position: absolute !important;
+      clip: rect(0, 0, 0, 0);
+      height: 1px;
+      width: 1px;
+      border: 0;
+      overflow: hidden;
+      &:checked + label {
+        background-color: $green-primary;
+        box-shadow: none;
+        color: white;
+        background-image: url(https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/03/check.png);
+      }
+    }
+    & label {
+      background-color: white;
+      background-image: url(https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/03/blank-check.png);
+      background-repeat: no-repeat;
+      background-size: 18px;
+      background-position: 5px center;
+      color: $slate-secondary-5;
+      font-size: 16px;
+      line-height: 1;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 8px 16px 6px 30px;
+      margin-right: 10px;
+      border: 2px solid $green-primary;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    &.retirement-radio label {
+      padding: 35px 7px 6px;
+      background-position: center 10px;
+    }
+    &.growth-radio label {
+      min-width: 137px;
     }
   }
 
