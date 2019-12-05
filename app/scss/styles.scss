@@ -23,7 +23,7 @@ $breakpoint-lg: 717px;
 // @import "css-reset";
 @import "colors";
 
-.chart-area {
+#calculator {
   @import "type";
 
   max-width: 660px;
@@ -32,6 +32,24 @@ $breakpoint-lg: 717px;
   font-size: 18px;
   &#calculator {
     background-image: none;
+  }
+
+  b {
+    font-weight: 600;
+  }
+
+  h2 {
+    margin-left: 0;
+    margin-right: 15px;
+    min-width: auto;
+    font-size: 24px;
+    line-height: 34px;
+    margin: 8px 0 24px;
+    font-weight: 700;
+    color: #363f41;
+    @include sm-md-xl {
+      font-size: 30px;
+    }
   }
 
   .calc-subhead {
@@ -50,15 +68,8 @@ $breakpoint-lg: 717px;
       display: block;
       font-weight: 600;
       font-size: 16px;
-      margin-bottom: 5px;
+      margin-bottom: 15px;
       color: $slate-primary;
-      &.radio-label {
-        display: inline-block;
-        margin-right: 35px;
-        text-transform: none;
-        font-weight: 500;
-        font-size: 12;
-      }
     }
     & input {
       border: 1px solid $slate-secondary-3;
@@ -114,7 +125,7 @@ $breakpoint-lg: 717px;
       font-size: 16px;
       line-height: 1;
       font-weight: 500;
-      letter-spacing: 1.5px;
+      letter-spacing: .7px;
       text-transform: uppercase;
       padding: 8px 16px 6px 30px;
       margin-right: 10px;
@@ -123,13 +134,16 @@ $breakpoint-lg: 717px;
       &:hover {
         cursor: pointer;
       }
-    }
-    &.retirement-radio label {
-      padding: 35px 7px 6px;
-      background-position: center 10px;
+      @include x-small {
+        padding: 12px 16px 12px 30px;
+      }
     }
     &.growth-radio label {
       min-width: 137px;
+      @include x-small {
+        width: 100%;
+        margin-bottom: 10px;
+      }
     }
   }
 
@@ -155,10 +169,17 @@ $breakpoint-lg: 717px;
     width: 214px;
     margin-top: 20px;
   }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .3s ease;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
   
 }
 
-.chart-area p {
+#calculator p {
   margin-top: 0;
   margin-bottom: 16px;
   color: #000;
