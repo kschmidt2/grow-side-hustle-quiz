@@ -23,7 +23,7 @@ $breakpoint-lg: 717px;
 // @import "css-reset";
 @import "colors";
 
-#calculator {
+#quiz {
   @import "type";
 
   max-width: 660px;
@@ -62,6 +62,52 @@ $breakpoint-lg: 717px;
     margin-top: 50px;
   }
 
+  .select-all {
+    display: flex;
+    flex-wrap: wrap;
+    & input {
+      position: absolute !important;
+      clip: rect(0, 0, 0, 0);
+      height: 1px;
+      width: 1px;
+      border: 0;
+      overflow: hidden;
+      &:checked + label {
+        background-color: $green-primary;
+        box-shadow: none;
+        color: white;
+        background-image: url(https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/03/check.png);
+        &:nth-child(4n+4) {
+          background-color: $green-secondary-4;
+        }
+      }
+    }
+    & label {
+      background-image: url(https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/03/blank-check.png);
+      background-repeat: no-repeat;
+      background-size: 18px;
+      background-position: 5px center;
+      color: $slate-secondary-5;
+      font-size: 16px;
+      line-height: 1.2;
+      font-weight: 500;
+      // letter-spacing: .7px;
+      padding: 16px 8px 12px 30px;
+      margin-right: 10px;
+      transition: all 0.2s ease-in-out;
+      width: 100%;
+      &:nth-child(4n+4) {
+        background-color: $slate-secondary-2;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+      @include x-small {
+        padding: 12px 16px 12px 30px;
+      }
+    }
+  }
+
   .calc-input {
     margin-bottom: 40px;
     & label {
@@ -97,9 +143,7 @@ $breakpoint-lg: 717px;
     }
   }
 
-  .calc-input-radio {
-    display: flex;
-    flex-wrap: wrap;
+  & #rideshare-follow, #assistant-follow {
     margin-bottom: 40px;
     & input {
       position: absolute !important;
@@ -144,6 +188,27 @@ $breakpoint-lg: 717px;
         width: 100%;
         margin-bottom: 10px;
       }
+    }
+  }
+
+  & button.submit {
+    margin-top: 15px;
+    color: $green-secondary-4;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+    padding: 8px 16px 8px 16px;
+    border: 2px solid $green-primary;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      color: #fff;
+      background-color: $green-primary;
+    }
+    @include x-small {
+      padding: 12px 16px 12px 30px;
     }
   }
 
