@@ -1,3 +1,14 @@
+Vue.component('result', {
+  props: ['title', 'image', 'content'],
+  template: `
+    <div>
+      <h2>You got: <span class="highlight">{{ title }}</span></h2>
+      <img src="{{image}}" class="result-image">
+      <p class="body-text">{{ content }}</p>
+    </div>
+  `
+})
+
 // setTimeout(function(){
   var quiz = new Vue({
     el: '#quiz',
