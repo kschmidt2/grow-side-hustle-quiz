@@ -51,12 +51,7 @@ Vue.component('result', {
       // functions go here
       calculateResults: function() {
 
-        this.showRideShare = false;
-        this.showTutor = false;
-        this.showShopper = false;
-        this.showWalker = false;
-        this.showHandler = false;
-        this.showAssistant = false;
+        this.reset();
 
         let sideHustles = {
           rideShare: 0,
@@ -168,8 +163,6 @@ Vue.component('result', {
 
       },
       findFallback: function (result, runnerUp) {
-        this.showRideShareQuestion = false;
-        this.showAssistantQuestion = false;
         if (this.carYesNo === 'no' || this.computerYesNo === 'no') {
           result = runnerUp;
           if (result == "tutor") {
@@ -182,6 +175,22 @@ Vue.component('result', {
             this.showHandler = !this.showHandler
           }
         }
+
+        this.hideQuestion();
+      },
+      reset: function() {
+        this.showRideShare = false;
+        this.showTutor = false;
+        this.showShopper = false;
+        this.showWalker = false;
+        this.showHandler = false;
+        this.showAssistant = false;
+        this.computerYesNo = false;
+        this.carYesNo = false;
+      },
+      hideQuestion: function() {
+        this.showRideShareQuestion = false;
+        this.showAssistantQuestion = false;
       }
     }
   })

@@ -74,7 +74,7 @@
             <p class="body-text">
                 Do you have a 4-door car that can pass a safety inspection?
             </p>
-            <input type="radio" id="car-yes" name="car-yes-no" v-model="carYesNo" value="yes" v-on:change="findFallback(result, runnerUp)"></input>
+            <input type="radio" id="car-yes" name="car-yes-no" v-model="carYesNo" value="yes" v-on:change="hideQuestion"></input>
             <label for="car-yes">Yes</label>
             <input type="radio" id="car-no" name="car-yes-no" v-model.number="carYesNo" value="no" v-on:change="findFallback(result, runnerUp)"></input>
             <label for="car-no">No</label>
@@ -84,7 +84,7 @@
             <p class="body-text">
                 Do you have access to a computer to use for work?
             </p>
-            <input type="radio" id="computer-yes" name="computer-yes-no" v-model="computerYesNo" value="yes" v-on:change="findFallback(result, runnerUp)"></input>
+            <input type="radio" id="computer-yes" name="computer-yes-no" v-model="computerYesNo" value="yes" v-on:change="hideQuestion"></input>
             <label for="computer-yes">Yes</label>
             <input type="radio" id="computer-no" name="computer-yes-no" v-model.number="computerYesNo" value="no" v-on:change="findFallback(result, runnerUp)"></input>
             <label for="computer-no">No</label>
