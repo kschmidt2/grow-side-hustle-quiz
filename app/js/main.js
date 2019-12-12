@@ -51,6 +51,13 @@ Vue.component('result', {
       // functions go here
       calculateResults: function() {
 
+        this.showRideShare = false;
+        this.showTutor = false;
+        this.showShopper = false;
+        this.showWalker = false;
+        this.showHandler = false;
+        this.showAssistant = false;
+
         let sideHustles = {
           rideShare: 0,
           tutor: 0,
@@ -161,10 +168,10 @@ Vue.component('result', {
 
       },
       findFallback: function (result, runnerUp) {
-        this.carYesNo === 'no';
+        this.showRideShareQuestion = false;
+        this.showAssistantQuestion = false;
         if (this.carYesNo === 'no' || this.computerYesNo === 'no') {
           result = runnerUp;
-          console.log(result);
           if (result == "tutor") {
             this.showTutor = !this.showTutor;
           } else if (result == "groceryShopper") {
