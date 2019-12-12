@@ -74,9 +74,9 @@
             <p class="body-text">
                 Do you have a 4-door car that can pass a safety inspection?
             </p>
-            <input type="radio" id="car-yes" name="car-yes-no" v-model="carYesNo" value="true"></input>
+            <input type="radio" id="car-yes" name="car-yes-no" v-model="carYesNo" value="yes"></input>
             <label for="car-yes">Yes</label>
-            <input type="radio" id="car-no" name="car-yes-no" v-model.number="carYesNo" value="false"></input>
+            <input type="radio" id="car-no" name="car-yes-no" v-model.number="carYesNo" value="no" v-on:change="findFallback(result, runnerUp)"></input>
             <label for="car-no">No</label>
         </div>
 
@@ -84,26 +84,53 @@
             <p class="body-text">
                 Do you have access to a computer to use for work?
             </p>
-            <input type="radio" id="computer-yes" name="computer-yes-no" v-model="computerYesNo" value="true"></input>
+            <input type="radio" id="computer-yes" name="computer-yes-no" v-model="computerYesNo" value="yes"></input>
             <label for="computer-yes">Yes</label>
-            <input type="radio" id="computer-no" name="computer-yes-no" v-model.number="computerYesNo" value="false"></input>
+            <input type="radio" id="computer-no" name="computer-yes-no" v-model.number="computerYesNo" value="no" v-on:change="findFallback(result, runnerUp)"></input>
             <label for="computer-no">No</label>
         </div>
 
 
     </div>
 
-    <div class="results" v-if="showResults==true">
-        Result
+    <div class="results">
         <result
+            v-if="carYesNo=='yes'"
             title="Ride-share driver"
-            content="This is where the content goes."
+            image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/rideshare-driver.jpg"
+            content="Sounds like driving a ride-share car  is a good match for you. You’ll need a car that can pass a safety inspection. Requirements vary by city for both Lyft  and Uber, and you’ll need to agree to a background check. You can choose your own hours, and your income can range from $14 to, according to a Lyft spokesperson, a national average of $30 per hour including tips. You’ll need to feel comfortable sharing a close space with strangers and be skilled at keeping your focus during long rides. "
+        ></result>
+        <result
+            v-if="showTutor==true"
+            title="Tutor"
+            image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/tutor.jpg"
+            content="Sounds like you’re a natural teacher. You can earn money while also enjoying the satisfaction of watching someone learn. And your sessions can range from teaching a child how to do better in their geometry homework to giving an adult their first piano lesson. You can earn $25 to $100 an hour depending on the price you set. If you prefer staying home, you may be able to hold some lessons in your space (like if you’re teaching singing but your student doesn’t have a piano), or you’ll travel to the other person’s space if that’s more convenient for them. "
+        ></result>
+        <result
+            v-if="showShopper==true"
+            title="Grocery shopper"
+            image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/grocery-shopper.jpg"
+            content="If you enjoy the site of a great Costco, working as a grocery shopper could be a good match for you. With apps like Shipt and Instacart, you log on when you like and check if there’s an available assignment. Then you purchase the requested items and deliver them to your client’s home. The minimum per-job payment is $5-$10 for Instacart, depending on the assignment. And according to Glassdoor, you can earn an average hourly rate of $14 with that platform. Shoppers can earn tips in addition to those payments."
+        ></result>
+        <result
+            v-if="showWalker==true"
+            title="Dog walker"
+            image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/dog-walker.jpg"
+            content="You could make a great dog walker. You’ll get to meet people in your neighborhood, get friendly with their pets, and stroll around the area. Be prepared for people to notice you walking down the street with multiple animals, which you could either ignore or welcome as a conversation starter. You can earn between $15 and $25 per hour depending on where you live. You can start by advertising on social media, putting a sign in the lobby of your building or local community center, and promoting yourself on virtual neighborhood discussion boards. "
+        ></result>
+        <result
+            v-if="showHandler==true"
+            title="Task handler"
+            image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/task-handler.jpg"
+            content="If you enjoy assembling furniture, cleaning homes, or planting flowers, you’re a good candidate for joining TaskRabbit. You connect with clients via the site (with a 30% fee per gig). From there, you can earn $40-$80 per hour for assembling Ikea furniture, and you can also get paid for picking up dry cleaning or standing in line for tickets. A 2017 survey shows workers averaging $380 per month. Taskers set their availability and work preferences (location, hourly rates, task categories, etc.) within the Tasker app up to 17 days in advance, and clients can choose from a list of available Taskers in their area. The client then sends a booking request to the Tasker, which opens a virtual chat between the client and Tasker."
+        ></result>
+        <result
+            v-if="computerYesNo=='yes'"
+            title="Virtual assistant"
+            image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/virtual-assistant.jpg"
+            content="As a virtual assistant, you can make yourself indispensable without leaving the house. You can help CEOs and other professionals set up meetings, organize their calendars, and handling social media accounts. You will need to be super-organized and responsible, reminding yourself that your client is counting on you to help their life run smoothly. You can earn anywhere from $15 to $25 per hour, and scale your business to eventually include virtual project managing and coaching. "
         ></result>
     </div>
-
-    <!-- <div class="result">
-        {{ calculateResults }}
-    </div> -->
 
   </div>
     

@@ -3,8 +3,8 @@ Vue.component('result', {
   template: `
     <div>
       <h2>You got: <span class="highlight">{{ title }}</span></h2>
-      <img src="{{image}}" class="result-image">
-      <p class="body-text">{{ content }}</p>
+      <img v-bind:src="image" class="result-image">
+      <p class="body-text" v-html="content"></p>
     </div>
   `
 })
@@ -28,12 +28,20 @@ Vue.component('result', {
       socialMedia: '',
       groceryShopper: '',
 
+      result: '',
+      runnerUp: '',
+
       showRideShareQuestion: false,
       carYesNo: '',
       showAssistantQuestion: false,
       computerYesNo: '',
 
-      showResults: false
+      showRideShare: '',
+      showTutor: '',
+      showShopper: '',
+      showWalker: '',
+      showHandler: '',
+      showAssistant: ''
     },
     computed: {
       // results go here
@@ -134,21 +142,39 @@ Vue.component('result', {
         console.log(quizResults)
         console.log(sorted)
 
-        let result = sorted[0];
-        console.log(result)
+        this.result = sorted[0],
+        this.runnerUp = sorted[1];
 
-        if (result !== "rideShare" && result !== "virtualAssistant") {
-          this.showResults = !this.ShowResults;
-          console.log(result);
+        if (this.result == "rideShare") {
+          this.showRideShareQuestion = !this.showRideShareQuestion;
+        } else if (this.result == "virtualAssistant") {
+          this.showAssistantQuestion = !this.showAssistantQuestion;
+        } else if (this.result == "tutor") {
+          this.showTutor = !this.showTutor;
+        } else if (this.result == "groceryShopper") {
+          this.showShopper = !this.showShopper;
+        } else if (this.result == "dogWalker") {
+          this.showWalker = !this.showWalker;
+        } else if (this.result == "taskHandler") {
+          this.showHandler = !this.showHandler
         }
 
-        if (result == "rideShare") {
-          this.showRideShareQuestion = !this.showRideShareQuestion;
-        } else if (result == "virtualAssistant") {
-          this.showAssistantQuestion = !this.showAssistantQuestion;
-        } 
-
-        console.log(this.showRideShareQuestion);
+      },
+      findFallback: function (result, runnerUp) {
+        this.carYesNo === 'no';
+        if (this.carYesNo === 'no' || this.computerYesNo === 'no') {
+          result = runnerUp;
+          console.log(result);
+          if (result == "tutor") {
+            this.showTutor = !this.showTutor;
+          } else if (result == "groceryShopper") {
+            this.showShopper = !this.showShopper;
+          } else if (result == "dogWalker") {
+            this.showWalker = !this.showWalker;
+          } else if (result == "taskHandler") {
+            this.showHandler = !this.showHandler
+          }
+        }
       }
     }
   })

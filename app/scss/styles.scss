@@ -40,17 +40,20 @@ $breakpoint-lg: 717px;
   }
 
   h2 {
-    margin-left: 0;
-    margin-right: 15px;
     min-width: auto;
     font-size: 24px;
     line-height: 34px;
-    margin: 8px 0 24px;
+    margin: 24px 0;
     font-weight: 700;
     color: #363f41;
     @include sm-md-xl {
       font-size: 30px;
     }
+  }
+
+  .result-image {
+    width: 100%;
+    max-width: 400px;
   }
 
   .select-all {
