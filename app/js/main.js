@@ -216,8 +216,8 @@ Vue.component('result', {
         this.showWalker = false;
         this.showHandler = false;
         this.showAssistant = false;
-        // this.computerYesNo = '';
-        // this.carYesNo = '';
+        this.computerYesNo = '';
+        this.carYesNo = '';
 
         this.hideQuestion();
       },
@@ -227,8 +227,6 @@ Vue.component('result', {
         
       },
       resetAll: function() {
-
-        // this.questions = this.questions.filter(x => !x.checked);
 
         this.reset();
 
