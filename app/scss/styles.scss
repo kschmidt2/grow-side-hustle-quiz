@@ -63,6 +63,14 @@ $font-stack: 'Avenir', 'Avenir Next', 'Arial', sans-serif;
     line-height: 1.66;
   }
 
+  .photo-credit {
+    color: $slate-primary;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .5px;
+    margin-top: 6px;
+  }
+
   .result-image {
     width: 100%;
     max-width: 400px;

@@ -4,6 +4,7 @@ Vue.component('result', {
     <div>
       <h2>You got: <span class="highlight">{{ title }}</span></h2>
       <img v-bind:src="image" class="result-image">
+      <p class="photo-credit">Twenty/20</p>
       <p class="body-text" v-html="content"></p>
     </div>
   `
