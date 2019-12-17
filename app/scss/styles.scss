@@ -203,7 +203,7 @@ $font-stack: 'Avenir', 'Avenir Next', 'Arial', sans-serif;
     transition: opacity .3s ease;
   }
   .fade-leave-active {
-    transition: opacity 0s ease;
+    transition: opacity .1s ease;
   }
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;

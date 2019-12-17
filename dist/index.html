@@ -34,9 +34,7 @@
 
     <div class="follow-up-questions">
 
-        <transition name="fade" mode="out-in">
-
-        <div id="rideshare-follow" v-show="showRideShareQuestion==true">
+        <div id="rideshare-follow" v-show="showRideShareQuestion==true" key="carq">
             <p class="body-text">
                 Do you have a 4-door car that can pass a safety inspection?
             </p>
@@ -46,11 +44,7 @@
             <label for="car-no">No</label>
         </div>
 
-    </transition>
-
-    <transition name="fade" mode="out-in">
-
-        <div id="assistant-follow" v-show="showAssistantQuestion==true">
+        <div id="assistant-follow" v-show="showAssistantQuestion==true" key="assistantq">
             <p class="body-text">
                 Do you have access to a computer to use for work?
             </p>
@@ -59,8 +53,6 @@
             <input type="radio" id="computer-no" v-model="computerYesNo" value="no" v-on:change="findFallback(result, runnerUp, runnerUp2)"></input>
             <label for="computer-no">No</label>
         </div>
-
-    </transition>
 
 
     </div>
