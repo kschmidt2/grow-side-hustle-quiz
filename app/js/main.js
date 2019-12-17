@@ -31,8 +31,6 @@ Vue.component('result', {
         {"name": "groceryShopper", "text": "I can stay calm in a busy grocery store."},
       ],
       
-      selected: [],
-
       result: '',
       runnerUp: '',
       runnerUp2: '',
@@ -192,8 +190,7 @@ Vue.component('result', {
             if (this.carYesNo == "no" && this.computerYesNo == "no") {
               result=runnerUp2;
               this.hideQuestion();
-            }
-            
+            } 
           } else {
             result = runnerUp;
             this.hideQuestion();
@@ -227,12 +224,10 @@ Vue.component('result', {
         this.showAssistantQuestion = false;
         
       },
-      resetAll: function() {
+      resetAllButton: function() {
 
         this.reset();
-
-        this.showRideShareQuestion = false;
-        this.showAssistantQuestion = false;
+        this.hideQuestion();
 
         for (var i=0;i<this.questions.length;i++) {
           if (this.questions[i].checked) {
