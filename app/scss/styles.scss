@@ -1,6 +1,8 @@
 $breakpoint-sm: 540px;
 $breakpoint-md: 660px;
 $breakpoint-lg: 717px;
+$font-stack: 'Avenir', 'Avenir Next', 'Arial', sans-serif;
+
 
 @mixin x-small {
   @media (max-width: #{$breakpoint-sm - 1px}) {
@@ -24,7 +26,6 @@ $breakpoint-lg: 717px;
 @import "colors";
 
 #quiz {
-  @import "type";
 
   max-width: 660px;
   margin-bottom: 25px;
@@ -49,6 +50,17 @@ $breakpoint-lg: 717px;
     @include sm-md-xl {
       font-size: 30px;
     }
+    &.select {
+      border-bottom: 3px solid $green-secondary-2;
+      padding-bottom: 10px;
+      padding-left: 5px;
+      margin: 5px 0;
+    }
+  }
+
+  .body-text {
+    margin-top: 25px;
+    line-height: 1.66;
   }
 
   .result-image {
@@ -59,6 +71,14 @@ $breakpoint-lg: 717px;
   .select-all {
     display: flex;
     flex-wrap: wrap;
+    &:nth-child(2n+1) {
+      background-color: $slate-secondary-2;
+      & input {
+        &:checked + label {
+          background-color: $green-secondary-4;
+        }
+      }
+    }
     & input {
       position: absolute !important;
       clip: rect(0, 0, 0, 0);
@@ -71,9 +91,6 @@ $breakpoint-lg: 717px;
         box-shadow: none;
         color: white;
         background-image: url(https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/03/check.png);
-        &:nth-child(4n+4) {
-          background-color: $green-secondary-4;
-        }
       }
     }
     & label {
@@ -86,13 +103,9 @@ $breakpoint-lg: 717px;
       line-height: 1.2;
       font-weight: 500;
       // letter-spacing: .7px;
-      padding: 16px 8px 12px 30px;
-      margin-right: 10px;
+      padding: 12px 8px 12px 30px;
       transition: all 0.2s ease-in-out;
       width: 100%;
-      &:nth-child(4n+4) {
-        background-color: $slate-secondary-2;
-      }
       &:hover {
         cursor: pointer;
       }
@@ -150,8 +163,9 @@ $breakpoint-lg: 717px;
     }
   }
 
-  & button.submit {
+  & button {
     margin-top: 15px;
+    margin-right: 15px;
     color: $green-secondary-4;
     font-size: 16px;
     line-height: 1;
@@ -161,13 +175,22 @@ $breakpoint-lg: 717px;
     padding: 8px 16px 8px 16px;
     border: 2px solid $green-primary;
     transition: all 0.2s ease-in-out;
+    background-color: #fff;
     &:hover {
       cursor: pointer;
       color: #fff;
       background-color: $green-primary;
     }
     @include x-small {
-      padding: 12px 16px 12px 30px;
+      padding: 12px 16px 12px 16px;
+    }
+    &.reset {
+      border: 2px solid $slate-secondary-4;
+      color: $slate-secondary-4;
+      &:hover {
+        background-color: $slate-secondary-4;
+        color: #fff;
+      }
     }
   }
 
@@ -176,10 +199,19 @@ $breakpoint-lg: 717px;
     text-decoration: none;
   }
 
-  .fade-enter-active, .fade-leave-active {
+  .fade-enter-active,  {
     transition: opacity .3s ease;
   }
+  .fade-leave-active {
+    transition: opacity 0s ease;
+  }
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+  .component-fade-enter-active, .component-fade-leave-active {
+    transition: opacity .3s ease;
+  }
+  .component-fade-enter, .component-fade-leave-to {
     opacity: 0;
   }
   

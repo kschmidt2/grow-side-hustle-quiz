@@ -19,117 +19,101 @@
 <body>
 
   <div id="quiz">
+    
+    <h2 class="select">Select all that apply</h2>
 
-    <div class="select-all">
+    <div class="select-all" v-for="question in questions">
 
-        <input type="checkbox" id="steady-income" v-model="steadyIncome">
-        <label for="steady-income">I'd like a steady, predictable income.</label>
-
-        <input type="checkbox" id="people-person" v-model="peoplePerson">
-        <label for="people-person">I consider myself a people person.</label>
-
-        <input type="checkbox" id="drive" v-model="drive">
-        <label for="drive">I can drive for long stretches and keep my focus.</label>
-
-        <input type="checkbox" id="physical-work" v-model="physicalWork">
-        <label for="physical-work">I can lift heavy boxes, assemble things, or clean a house.</label>
-
-        <input type="checkbox" id="skilled" v-model="skilled">
-        <label for="skilled">I'm skilled in music, sports, math, or another topic, and would love to share my knowledge.</label>
-
-        <input type="checkbox" id="fixing-things" v-model="fixingThings">
-        <label for="fixing-things">When someone needs something fixed around the house, they call me.</label>
-
-        <input type="checkbox" id="kids" v-model="kids">
-        <label for="kids">I like working with kids.</label>
-
-        <input type="checkbox" id="organized" v-model="organized">
-        <label for="organized">I'm highly organized.</label>
-
-        <input type="checkbox" id="comfort-home" v-model="comfortHome">
-        <label for="comfort-home">I prefer to work from the comfort of my own home.</label>
-
-        <input type="checkbox" id="loves-dogs" v-model="lovesDogs">
-        <label for="loves-dogs">I love dogs of all kinds.</label>
-
-        <input type="checkbox" id="regular-clients" v-model="regularClients">
-        <label for="regular-clients">I prefer regular clients I can develop relationships with rather than one-shot deals.</label>
-
-        <input type="checkbox" id="menial-tasks" v-model="menialTasks">
-        <label for="menial-tasks">I don't mind doing menial tasks.</label>
-
-        <input type="checkbox" id="social-media" v-model="socialMedia">
-        <label for="social-media">I am good at, and enjoy using, social media.</label>
-
-        <input type="checkbox" id="grocery-shopper" v-model="groceryShopper">
-        <label for="grocery-shopper">Need something here for grocery shopper.</label>
+        <input type="checkbox" :id="question.name" v-model="question.checked" value=true></input>
+        <label :for="question.name">{{ question.text }}</label>
 
     </div>
 
-    <button class="submit" v-on:click="calculateResults">submit</button>
+    <button v-on:click="calculateResults">submit</button>
+    <button class="reset" v-on:click="resetAll">reset</button>
 
     <div class="follow-up-questions">
 
-        <div id="rideshare-follow" v-if="showRideShareQuestion==true">
+        <transition name="fade" mode="out-in">
+
+        <div id="rideshare-follow" v-show="showRideShareQuestion==true">
             <p class="body-text">
                 Do you have a 4-door car that can pass a safety inspection?
             </p>
             <input type="radio" id="car-yes" name="car-yes-no" v-model="carYesNo" value="yes" v-on:change="hideQuestion"></input>
             <label for="car-yes">Yes</label>
-            <input type="radio" id="car-no" name="car-yes-no" v-model.number="carYesNo" value="no" v-on:change="findFallback(result, runnerUp)"></input>
+            <input type="radio" id="car-no" name="car-yes-no" v-model="carYesNo" value="no" v-on:change="findFallback(result, runnerUp, runnerUp2)"></input>
             <label for="car-no">No</label>
         </div>
 
-        <div id="assistant-follow" v-if="showAssistantQuestion==true">
+    </transition>
+
+    <transition name="fade" mode="out-in">
+
+        <div id="assistant-follow" v-show="showAssistantQuestion==true">
             <p class="body-text">
                 Do you have access to a computer to use for work?
             </p>
-            <input type="radio" id="computer-yes" name="computer-yes-no" v-model="computerYesNo" value="yes" v-on:change="hideQuestion"></input>
+            <input type="radio" id="computer-yes" v-model="computerYesNo" value="yes" v-on:change="hideQuestion"></input>
             <label for="computer-yes">Yes</label>
-            <input type="radio" id="computer-no" name="computer-yes-no" v-model.number="computerYesNo" value="no" v-on:change="findFallback(result, runnerUp)"></input>
+            <input type="radio" id="computer-no" v-model="computerYesNo" value="no" v-on:change="findFallback(result, runnerUp, runnerUp2)"></input>
             <label for="computer-no">No</label>
         </div>
+
+    </transition>
 
 
     </div>
 
+    <div class="error" v-if="showError==true">
+        <p class="body-text">You didn't select anything! Please select at least one attribute and try again.</p>
+    </div>
+
     <div class="results">
-        <result
-            v-if="carYesNo=='yes'"
-            title="Ride-share driver"
-            image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/rideshare-driver.jpg"
-            content="Sounds like driving a ride-share car  is a good match for you. You’ll need a car that can pass a safety inspection. Requirements vary by city for both Lyft  and Uber, and you’ll need to agree to a background check. You can choose your own hours, and your income can range from $14 to, according to a Lyft spokesperson, a national average of $30 per hour including tips. You’ll need to feel comfortable sharing a close space with strangers and be skilled at keeping your focus during long rides. "
-        ></result>
-        <result
-            v-else-if="showTutor==true"
-            title="Tutor"
-            image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/tutor.jpg"
-            content="Sounds like you’re a natural teacher. You can earn money while also enjoying the satisfaction of watching someone learn. And your sessions can range from teaching a child how to do better in their geometry homework to giving an adult their first piano lesson. You can earn $25 to $100 an hour depending on the price you set. If you prefer staying home, you may be able to hold some lessons in your space (like if you’re teaching singing but your student doesn’t have a piano), or you’ll travel to the other person’s space if that’s more convenient for them. "
-        ></result>
-        <result
-            v-else-if="showShopper==true"
-            title="Grocery shopper"
-            image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/grocery-shopper.jpg"
-            content="If you enjoy the site of a great Costco, working as a grocery shopper could be a good match for you. With apps like Shipt and Instacart, you log on when you like and check if there’s an available assignment. Then you purchase the requested items and deliver them to your client’s home. The minimum per-job payment is $5-$10 for Instacart, depending on the assignment. And according to Glassdoor, you can earn an average hourly rate of $14 with that platform. Shoppers can earn tips in addition to those payments."
-        ></result>
-        <result
-            v-else-if="showWalker==true"
-            title="Dog walker"
-            image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/dog-walker.jpg"
-            content="You could make a great dog walker. You’ll get to meet people in your neighborhood, get friendly with their pets, and stroll around the area. Be prepared for people to notice you walking down the street with multiple animals, which you could either ignore or welcome as a conversation starter. You can earn between $15 and $25 per hour depending on where you live. You can start by advertising on social media, putting a sign in the lobby of your building or local community center, and promoting yourself on virtual neighborhood discussion boards. "
-        ></result>
-        <result
-            v-else-if="showHandler==true"
-            title="Task handler"
-            image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/task-handler.jpg"
-            content="If you enjoy assembling furniture, cleaning homes, or planting flowers, you’re a good candidate for joining TaskRabbit. You connect with clients via the site (with a 30% fee per gig). From there, you can earn $40-$80 per hour for assembling Ikea furniture, and you can also get paid for picking up dry cleaning or standing in line for tickets. A 2017 survey shows workers averaging $380 per month. Taskers set their availability and work preferences (location, hourly rates, task categories, etc.) within the Tasker app up to 17 days in advance, and clients can choose from a list of available Taskers in their area. The client then sends a booking request to the Tasker, which opens a virtual chat between the client and Tasker."
-        ></result>
-        <result
-            v-else-if="computerYesNo=='yes'"
-            title="Virtual assistant"
-            image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/virtual-assistant.jpg"
-            content="As a virtual assistant, you can make yourself indispensable without leaving the house. You can help CEOs and other professionals set up meetings, organize their calendars, and handling social media accounts. You will need to be super-organized and responsible, reminding yourself that your client is counting on you to help their life run smoothly. You can earn anywhere from $15 to $25 per hour, and scale your business to eventually include virtual project managing and coaching. "
-        ></result>
+        <transition name="component-fade" mode="out-in">
+            <result
+                v-if="carYesNo=='yes'"
+                title="Ride-share driver"
+                image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/rideshare-driver.jpg"
+                content="Sounds like driving a ride-share car  is a good match for you. You’ll need a car that can pass a safety inspection. Requirements vary by city for both Lyft  and Uber, and you’ll need to agree to a background check. You can choose your own hours, and your income can range from $14 to, according to a Lyft spokesperson, a national average of $30 per hour including tips. You’ll need to feel comfortable sharing a close space with strangers and be skilled at keeping your focus during long rides. "
+                key="rideshare"
+            ></result>
+            <result
+                v-else-if="showTutor==true"
+                title="Tutor"
+                image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/tutor.jpg"
+                content="Sounds like you’re a natural teacher. You can earn money while also enjoying the satisfaction of watching someone learn. And your sessions can range from teaching a child how to do better in their geometry homework to giving an adult their first piano lesson. You can earn $25 to $100 an hour depending on the price you set. If you prefer staying home, you may be able to hold some lessons in your space (like if you’re teaching singing but your student doesn’t have a piano), or you’ll travel to the other person’s space if that’s more convenient for them. "
+                key="tutor"
+            ></result>
+            <result
+                v-else-if="showShopper==true"
+                title="Grocery shopper"
+                image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/grocery-shopper.jpg"
+                content="If you enjoy the site of a great Costco, working as a grocery shopper could be a good match for you. With apps like Shipt and Instacart, you log on when you like and check if there’s an available assignment. Then you purchase the requested items and deliver them to your client’s home. The minimum per-job payment is $5-$10 for Instacart, depending on the assignment. And according to Glassdoor, you can earn an average hourly rate of $14 with that platform. Shoppers can earn tips in addition to those payments."
+                key="shopper"
+            ></result>
+            <result
+                v-else-if="showWalker==true"
+                title="Dog walker"
+                image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/dog-walker.jpg"
+                content="You could make a great dog walker. You’ll get to meet people in your neighborhood, get friendly with their pets, and stroll around the area. Be prepared for people to notice you walking down the street with multiple animals, which you could either ignore or welcome as a conversation starter. You can earn between $15 and $25 per hour depending on where you live. You can start by advertising on social media, putting a sign in the lobby of your building or local community center, and promoting yourself on virtual neighborhood discussion boards. "
+                key="walker"
+            ></result>
+            <result
+                v-else-if="showHandler==true"
+                title="Task handler"
+                image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/task-handler.jpg"
+                content="If you enjoy assembling furniture, cleaning homes, or planting flowers, you’re a good candidate for joining TaskRabbit. You connect with clients via the site (with a 30% fee per gig). From there, you can earn $40-$80 per hour for assembling Ikea furniture, and you can also get paid for picking up dry cleaning or standing in line for tickets. A 2017 survey shows workers averaging $380 per month. Taskers set their availability and work preferences (location, hourly rates, task categories, etc.) within the Tasker app up to 17 days in advance, and clients can choose from a list of available Taskers in their area. The client then sends a booking request to the Tasker, which opens a virtual chat between the client and Tasker."
+                key="handler"
+            ></result>
+            <result
+                v-else-if="computerYesNo=='yes'"
+                title="Virtual assistant"
+                image="https://fm.cnbc.com/applications/cnbc.com/resources/files/2019/12/12/virtual-assistant.jpg"
+                content="As a virtual assistant, you can make yourself indispensable without leaving the house. You can help CEOs and other professionals set up meetings, organize their calendars, and handling social media accounts. You will need to be super-organized and responsible, reminding yourself that your client is counting on you to help their life run smoothly. You can earn anywhere from $15 to $25 per hour, and scale your business to eventually include virtual project managing and coaching. "
+                key="assistant"
+            ></result>
+        </transition>
     </div>
 
   </div>
