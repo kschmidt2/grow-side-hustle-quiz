@@ -94,9 +94,7 @@ Vue.component('result', {
 
         if (questions[4].checked) {
           sideHustles.tutor+=2;
-        } else {
-          sideHustles.tutor-=20;
-        }
+        } 
 
         if (questions[5].checked) {
           sideHustles.taskHandler+=2;
@@ -153,7 +151,7 @@ Vue.component('result', {
         let valueArray = Object.values(sideHustles);
         let sum = valueArray.reduce((a, b) => a + b, 0)
 
-        if (sum == -20) {
+        if (sum == 0) {
           this.showError = !this.showError;
         } else {
           sorted = Object.keys(sideHustles)
