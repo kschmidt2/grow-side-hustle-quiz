@@ -144,11 +144,11 @@ Vue.component('result', {
           sideHustles.groceryShopper+=2;
         }
 
-        let quizResults = "Ride-share: " + sideHustles.rideShare +  "; Tutor: " + sideHustles.tutor + "; Grocery shopper: " + sideHustles.groceryShopper + "; Dog Walker: " + sideHustles.dogWalker + "; Task handler: " + sideHustles.taskHandler + "; Virtual assistant: " + sideHustles.virtualAssistant;
+        // let quizResults = "Ride-share: " + sideHustles.rideShare +  "; Tutor: " + sideHustles.tutor + "; Grocery shopper: " + sideHustles.groceryShopper + "; Dog Walker: " + sideHustles.dogWalker + "; Task handler: " + sideHustles.taskHandler + "; Virtual assistant: " + sideHustles.virtualAssistant;
 
         let sorted; 
 
-        console.log(quizResults)
+        // console.log(quizResults)
 
         let valueArray = Object.values(sideHustles);
         let sum = valueArray.reduce((a, b) => a + b, 0)
@@ -160,7 +160,7 @@ Vue.component('result', {
                       .sort(function(a,b){
                         return sideHustles[b] - sideHustles[a] || 0.5 - Math.random();
                       });
-          console.log(sorted)
+          // console.log(sorted)
           this.result = sorted[0],
           this.runnerUp = sorted[1];
           this.runnerUp2 = sorted[2];
